@@ -25,13 +25,7 @@ const App = () => {
       }
       requestAnimationFrame(raf);
 
-      // 2. PARALLAX & REVEALS
-      const handleMouseMove = (e) => {
-         const x = (e.clientX / window.innerWidth - 0.5) * 30;
-         const y = (e.clientY / window.innerHeight - 0.5) * 30;
-         gsap.to(".hero-parallax", { x: -x, y: -y, duration: 2, ease: "power2.out" });
-      };
-      window.addEventListener('mousemove', handleMouseMove);
+      // 2. REVEALS
 
       // CINEMATIC REVEALS
       const reveals = document.querySelectorAll('.reveal-up');
@@ -69,8 +63,7 @@ const App = () => {
 
       return () => {
          lenis.destroy();
-         window.removeEventListener('mousemove', handleMouseMove);
-         ScrollTrigger.getAll().forEach(t => t.kill());
+,StartLine:72,TargetContent:         ScrollTrigger.getAll().forEach(t => t.kill());
       };
    }, []);
 
