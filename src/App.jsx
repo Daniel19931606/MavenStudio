@@ -63,7 +63,7 @@ const App = () => {
 
       return () => {
          lenis.destroy();
-,StartLine:72,TargetContent:         ScrollTrigger.getAll().forEach(t => t.kill());
+         ScrollTrigger.getAll().forEach(t => t.kill());
       };
    }, []);
 
