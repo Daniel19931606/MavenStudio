@@ -137,25 +137,17 @@ const Hero3D = () => {
 
     camera.position.z = 10;
 
-    let mouseX = 0;
-    let mouseY = 0;
-    const onMouseMove = (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5);
-      mouseY = (e.clientY / window.innerHeight - 0.5);
-    };
-    window.addEventListener('mousemove', onMouseMove);
-
     const animate = () => {
       requestAnimationFrame(animate);
       const time = Date.now() * 0.001;
 
       silkMat.uniforms.time.value = time;
-      silkMat.uniforms.mouse.value.set(mouseX, mouseY);
+      silkMat.uniforms.mouse.value.set(0, 0);
 
       particlesMat.uniforms.time.value = time;
-      particlesMat.uniforms.mouse.value.set(mouseX * 1.5, -mouseY * 1.5); // Adjusted scale for particles
+      particlesMat.uniforms.mouse.value.set(0, 0);
 
-      mouseLight.position.set(mouseX * 15, -mouseY * 15, 5);
+      mouseLight.position.set(0, 0, 5);
       particlesMesh.rotation.z = time * 0.005;
 
       renderer.render(scene, camera);
@@ -170,7 +162,6 @@ const Hero3D = () => {
     animate();
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('resize', handleResize);
       renderer.dispose();
     };
