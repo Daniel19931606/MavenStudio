@@ -37,7 +37,7 @@ const Hero3D = () => {
           val += sin(p.x * 1.5 + p.y * 1.5);
         }
         float sheen = pow(abs(val) * 0.18, 4.0);
-        vec3 color = vec3(0.012, 0.012, 0.018) + vec3(0.35, 0.4, 0.5) * sheen;
+        vec3 color = vec3(0.01) + vec3(0.4) * sheen;
         float d = length(vUv - 0.5);
         color *= smoothstep(1.2, 0.1, d);
         gl_FragColor = vec4(color, 1.0);
@@ -108,9 +108,10 @@ const Hero3D = () => {
     for (let i = 0; i < particlesCount * 3; i++) {
       posArray[i] = (Math.random() - 0.5) * 40;
       if (i % 3 === 0) {
-        colorArray[i] = 0.8 + Math.random() * 0.2;
-        colorArray[i + 1] = 0.8 + Math.random() * 0.2;
-        colorArray[i + 2] = 0.9 + Math.random() * 0.1;
+        const val = 0.8 + Math.random() * 0.2;
+        colorArray[i] = val;
+        colorArray[i + 1] = val;
+        colorArray[i + 2] = val;
       }
     }
     const particlesGeo = new THREE.BufferGeometry();
@@ -132,7 +133,7 @@ const Hero3D = () => {
     const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
     scene.add(particlesMesh);
 
-    const mouseLight = new THREE.PointLight(0x4488ff, 20, 25);
+    const mouseLight = new THREE.PointLight(0xffffff, 20, 25);
     scene.add(mouseLight);
 
     camera.position.z = 10;
